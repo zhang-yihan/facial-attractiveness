@@ -1,2 +1,2 @@
 # facial-attractiveness
-Data Analysis Project: What make a face attractive?
+Data Analysis Project: What makes a face attractive?

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>Face Study</title>
+  <link href="css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  <link href="css/face.css" rel="stylesheet" type="text/css"></link>
+
+</head>
+
+<body>
+
+  <script src="jspsych/jquery.min.js"></script>
+  <script src="jspsych/jspsych.js"></script>
+  <script src="jspsych/plugins/jspsych-text.js"></script>
+  <script src="jspsych/plugins/jspsych-single-stim.js"></script>
+  <script src="jspsych/plugins/jspsych-multi-stim-multi-response.js"></script>
+  <script src="jspsych/plugins/jspsych-survey-text.js"></script>
+  <script src="jspsych/plugins/jspsych-survey-multi-choice.js"></script>
+  <script src="jspsych/plugins/jspsych-survey-likert.js"></script>
+
+  <script src="lib/consent.js"></script>
+  <script src="lib/practice.js"></script>
+  <script src="lib/main_task.js"></script>
+  <script src="lib/survey_demographic.js"></script>
+
+  <script src="lib/experiment.js"></script>
+
+</body>
+
+<script>
+
+/* start the experiment */
+jsPsych.pluginAPI.preloadImages(stimuli.concat(practice_stimuli),
+  function(){ startExperiment(); });
+
+function startExperiment(){
+  jsPsych.init({
+    timeline: face_experiment,
+    //fullscreen: true//, //User can terminate full screen mode at any time. Safari does not support keyboard input when the browser is in fullscreen mode. Therefore, the function will not launch fullscreen mode on Safari.
+    on_finish: function(data){
+      jsPsych.data.displayData('JSON'); // display data on the screen
+      jsPsych.data.localSave('mydata.csv', 'csv'); // debug: save data to local
+      // var current_datetime = new Date().getTime(); // use time as sessionID
+      // saveData(current_datetime, jsPsych.data.dataAsCSV())
+    }
+    });
+}
+
+</script>
+
+</html>
